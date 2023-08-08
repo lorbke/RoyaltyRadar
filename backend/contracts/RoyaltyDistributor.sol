@@ -68,7 +68,7 @@ contract RoyaltyDistributor {
         // @todo ensure that staker cannot withdraw multiple times
         uint256 total_stake = 0;
         for (uint256 i = 0; i < artists.length; i++) {
-            total_stake += stakes[artists[i]][msg.sender];
+            total_stake += total_received[artists[i]] * (stakes[artists[i]][msg.sender] / 100);
         }
         payable(msg.sender).transfer(total_stake);
     }
