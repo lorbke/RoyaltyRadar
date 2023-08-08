@@ -2,8 +2,8 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "/Users/luca/Desktop/Superhack/RoyaltyRadar/backend/contracts/ERC721WithRoyalties.sol": {
-      "lastModificationDate": 1691497580247,
-      "contentHash": "046afde04d2eb3cb84b2edb0c0cd898c",
+      "lastModificationDate": 1691499702225,
+      "contentHash": "32728b4d7b88d25d7e267c029c410264",
       "sourceName": "contracts/ERC721WithRoyalties.sol",
       "solcConfig": {
         "version": "0.8.18",
@@ -549,6 +549,42 @@
       ],
       "artifacts": [
         "IERC165"
+      ]
+    },
+    "/Users/luca/Desktop/Superhack/RoyaltyRadar/backend/contracts/RoyaltyDistributor.sol": {
+      "lastModificationDate": 1691509761313,
+      "contentHash": "29ef0cab6309c18c2e5b9a64bea6459e",
+      "sourceName": "contracts/RoyaltyDistributor.sol",
+      "solcConfig": {
+        "version": "0.8.18",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0",
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "RoyaltyDistributor"
       ]
     }
   }
