@@ -1,29 +1,78 @@
-import React from 'react';
+"use client"
+import React, { useState } from 'react';
+import Modal from 'react-modal';
 import Link from 'next/link';
-import artistsData from '../../data/artistData'; // Replace with your data source
-import styles from './artistList.css';
+import artistsData from '../../data/artistData';
+import './artistList.css';
+import './artistModal.css'; 
+import ArtistModal from './artistModal';
 
 const ArtistList = () => {
+  const [selectedArtist, setSelectedArtist] = useState(null);
+
+  const openModal = (artist) => {
+    setSelectedArtist(artist);
+  };
+
+  const closeModal = () => {
+    setSelectedArtist(null);
+  };
+
+  const handleExchange = () => {
+    // Handle the exchange action here
+    console.log('Exchange clicked for', selectedArtist.name);
+  };
+
   return (
     <div className="container">
       <div className="artistGrid">
         {artistsData.map((artist) => (
-          <Link key={artist.id} className="artistCard" href={`/artist/${artist.id}`}>
+          <div
+            key={artist.id}
+            className="artistCard"
+            onClick={() => openModal(artist)}
+          >
             <img src={artist.profilePic} alt={`${artist.name}'s Profile`} className="artistImage" />
             <div className="artistInfo">
               <h2 className="artistFont">{artist.name}</h2>
               <p className="artistFont">Price: {artist.price}</p>
             </div>
-          </Link>
+          </div>
         ))}
       </div>
+
+      {/* Modal */}
+      <Modal
+        isOpen={selectedArtist !== null}
+        onRequestClose={closeModal}
+        contentLabel="Artist Modal"
+        style={{
+          overlay: {
+          },
+          content: {
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            width: '500px',
+            height: '500px',
+            padding: '20px',
+            background: 'rgba(255, 255, 255, 0)',
+            border: '5px dashed black',
+            borderRadius: '15px',
+          },
+        }}
+      >
+        {selectedArtist && (
+          <ArtistModal
+            artist={selectedArtist}
+            onClose={closeModal}
+            onExchange={handleExchange}
+          />
+        )}
+      </Modal>
     </div>
   );
 };
-
-
-{/* <Link className="buyButton" href={`/artist/${artist.id}`}>
-Buy Now
-</Link> */}
 
 export default ArtistList;

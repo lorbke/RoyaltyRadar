@@ -1,28 +1,28 @@
 const artistsData = [
     {
       id: '1',
-      name: 'Donkey Yacht Club',
+      name: 'Cittly',
       profilePic: 'artist1.jpg',
       price: '1000 ETH',
       sellingpercentageroyalty: 20,
     },
     {
       id: '2',
-      name: 'Baaple',
+      name: 'Kitty Yacht Club',
       profilePic: 'artist2.png',
       price: '666 ETH',
       sellingpercentageroyalty: 15,
     },
     {
       id: '3',
-      name: 'CryptoFunk',
+      name: 'CryptoFunkCat',
       profilePic: 'artist3.jpeg',
       price: '71829 ETH',
       sellingpercentageroyalty: 10,
     },
     {
       id: '4',
-      name: 'XZY Copy',
+      name: 'XZY Kadse',
       profilePic: 'artist4.jpeg',
       price: '123 ETH',
       sellingpercentageroyalty: 40,
