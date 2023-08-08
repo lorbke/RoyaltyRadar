@@ -61,15 +61,22 @@ contract RoyaltyDistributor {
     }
 
     function buyRoyaltyRights(address artist, uint256 percentage) external {
+        // @todo ensure that artist exists
         stakes[artist][msg.sender] += percentage;
     }
 
     function withdrawRoyalties() external {
         // @todo ensure that staker cannot withdraw multiple times
         uint256 total_stake = 0;
-        for (uint256 i = 0; i < artists.length; i++) {
-            total_stake += total_received[artists[i]] * (stakes[artists[i]][msg.sender] / 100);
+        for (uint i = 0; i < artists.length; i++) {
+            address artist = artists[i];
+            uint256 caller_stake_percentage = stakes[artist][msg.sender];
+            if (caller_stake_percentage > 0) {
+                uint256 royalties_for_artist = (total_received[artist] * caller_stake_percentage) / 100;
+                total_stake += royalties_for_artist;
+                stakes[artist][msg.sender] = 0;
         }
+    }
         payable(msg.sender).transfer(total_stake);
     }
 }
