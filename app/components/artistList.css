@@ -1,0 +1,56 @@
+.container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 30px;
+} 
+
+.artistGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.artistCard {
+  background-color: ghostwhite;
+  padding: 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.artistImage {
+  max-width: 100%;
+  height: auto; 
+  margin-bottom: 10px;
+}
+
+.artistInfo {
+  flex: 1;
+  display: f;
+  flex-direction: row;
+  height: 100%;
+  width: 100%;
+}
+
+.artistFont{
+  color: black;
+}
+
+.buyButton {
+  border-radius: 2px;
+  background-color: #f0ce20;
+  color: black;
+  text-align: center;
+  padding: 10px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+  width: 100%;
+  text-align: center;
+}
+
+.buyButton:hover {
+  background-color: #3fff00;
+}
+  
