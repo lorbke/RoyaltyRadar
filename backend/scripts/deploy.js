@@ -20,8 +20,8 @@ async function main() {
     console.log("Deploying contracts with the account:", deployer.address);
     console.log("Account balance:", (await deployer.getBalance()).toString());
 
-	const erc721Royalties = await deployERC721WithForcedRoyalties();
-    console.log("ERC721WithForcedRoyalties deployed to:", erc721Royalties.address);
+	// const erc721Royalties = await deployERC721WithForcedRoyalties();
+    // console.log("ERC721WithForcedRoyalties deployed to:", erc721Royalties.address);
 
 	const royaltyDistributor = await deployRoyaltyDistributor();
 	console.log("RoyaltyDistributor deployed to:", royaltyDistributor.address);
