@@ -2,10 +2,7 @@
 import React from 'react';
 import NavBar from '../components/navbar';
 import MetaMaskButton from '../components/metamaskButton';
-
-const unStake = () => {
-	console.log('unstake');
-}
+import ProfilUnstakeButton from '../components/profilUnstakeButton';
 
 const ProfilPage = () => {
   return (
@@ -13,7 +10,8 @@ const ProfilPage = () => {
 	    <NavBar />
       <MetaMaskButton />
       <h1>Royalty Radar 📡 </h1>
-      <button onClick={unStake}>Unstake!</button>
+      <h2>Your Stake: </h2>
+      <ProfilUnstakeButton />
     </div>
   );
 };

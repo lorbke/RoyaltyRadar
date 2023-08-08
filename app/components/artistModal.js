@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from 'react';
 import './artistModal.css'; // Import your custom CSS
+import ModalExchangeButton from './modalExchangeButton';
 
 const ArtistModal = ({ artist, onClose, onExchange }) => {
   const [ethValue, setEthValue] = useState('');
@@ -40,9 +41,8 @@ const ArtistModal = ({ artist, onClose, onExchange }) => {
         />
       </div>
       <div className="modalFooter">
-        <button className="modalExchangeButton" onClick={() => onExchange(ethValue, royaltyValue)}>
-          Exchange
-        </button>
+        <ModalExchangeButton />
+        <button>hey</button>
       </div>
     </div>
   );

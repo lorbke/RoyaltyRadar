@@ -3,6 +3,7 @@ import NavBar from '../components/navbar';
 import MetaMaskButton from '../components/metamaskButton';
 
 const ProfilPage = () => {
+
   return (
     <div>
 			<NavBar />
