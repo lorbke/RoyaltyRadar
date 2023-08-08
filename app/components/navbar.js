@@ -1,13 +1,14 @@
 import React from 'react';
+import Link from 'next/link';
 import './navbar.css';
 
 const NavBar = () => {
   return (
     <div className="navBar">
       <nav className="navMenu">
-        <a href="#">Home</a>
-        <a href="#">Profil</a>
-        <a href="#">About</a>
+        <Link href="../">Home</Link>
+        <Link href="../profil/">Profil</Link>
+        <Link href="../about/">About</Link>
         <div className="dot"></div>
       </nav>
     </div>
