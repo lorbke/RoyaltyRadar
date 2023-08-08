@@ -66,7 +66,6 @@ contract RoyaltyDistributor {
     }
 
     function withdrawRoyalties() external {
-        // @todo ensure that staker cannot withdraw multiple times
         uint256 total_stake = 0;
         for (uint i = 0; i < artists.length; i++) {
             address artist = artists[i];
@@ -76,6 +75,7 @@ contract RoyaltyDistributor {
                 total_stake += royalties_for_artist;
                 stakes[artist][msg.sender] = 0;
         }
+        require(total_stake > 0, "No royalties to withdraw");
     }
         payable(msg.sender).transfer(total_stake);
     }
