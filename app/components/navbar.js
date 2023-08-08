@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './navbar.css';
+import './navbar.css';
 
 const NavBar = () => {
   return (
@@ -11,6 +11,7 @@ const NavBar = () => {
         <div className="dot"></div>
       </nav>
     </div>
+    
   )
 }
 

@@ -24,9 +24,14 @@ body {
 .navMenu {
   position: absolute;
   top: 50%;
+  width: 80%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
+}
+
+.navMetaMaskButton{
+  width: 20%;
 }
 
 .navMenu a {

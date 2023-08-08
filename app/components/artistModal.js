@@ -1,7 +1,19 @@
-import React from 'react';
+"use client";
+import React, { useState } from 'react';
 import './artistModal.css'; // Import your custom CSS
 
 const ArtistModal = ({ artist, onClose, onExchange }) => {
+  const [ethValue, setEthValue] = useState('');
+  const [royaltyValue, setRoyaltyValue] = useState('');
+
+  const handleEthChange = (e) => {
+    setEthValue(e.target.value);
+  };
+
+  const handleRoyaltyChange = (e) => {
+    setRoyaltyValue(e.target.value);
+  };
+
   return (
     <div className="modalContainer">
       <div className="modalHeader">
@@ -14,11 +26,21 @@ const ArtistModal = ({ artist, onClose, onExchange }) => {
         </div>
       </div>
       <div className="modalTrade">
-
-
+        <input
+          className="modalETH"
+          placeholder="Enter ETH amount"
+          value={ethValue}
+          onChange={handleEthChange}
+        />
+        <input
+          className="modalRoyalty"
+          placeholder="Enter royalty percentage"
+          value={royaltyValue}
+          onChange={handleRoyaltyChange}
+        />
       </div>
       <div className="modalFooter">
-        <button className="modalExchangeButton" onClick={onExchange}>
+        <button className="modalExchangeButton" onClick={() => onExchange(ethValue, royaltyValue)}>
           Exchange
         </button>
       </div>
