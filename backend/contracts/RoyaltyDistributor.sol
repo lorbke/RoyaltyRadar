@@ -44,34 +44,42 @@ pragma solidity ^0.8.0;
 // }
 
 contract RoyaltyDistributor {
-    address[] public artists;
+    struct Artist {
+        address addr;
+        uint256 total_received;
+        uint256 share_percentage;
+        uint256 share_price;
+    }
+
+    Artist[] public artists;
     mapping (address => uint256) public artist_index;
-    mapping (address => uint256) public total_received;
     mapping (address => mapping (address => uint256)) public stakes;
 
     function registerArtist() external {
         // @todo Ensure the artist is not already registered.
         require(artist_index[msg.sender] == 0, "Artist already registered");
-        artists.push(msg.sender);
+        artists.push(Artist(msg.sender, 0, 0, 0));
         artist_index[msg.sender] = artists.length;
     }
 
     function giveRoyalties(address artist) external payable {
-        total_received[artist] += msg.value;
+        artists[artist_index[artist]].total_received += msg.value;
     }
 
     function buyRoyaltyRights(address artist, uint256 percentage) external {
         // @todo ensure that artist exists
+        // @todo ensure that percentage is not 0
+        // @todo ensure that percentage is actually available
         stakes[artist][msg.sender] += percentage;
     }
 
     function withdrawRoyalties() external {
         uint256 total_stake = 0;
         for (uint i = 0; i < artists.length; i++) {
-            address artist = artists[i];
+            address artist = artists[i].addr;
             uint256 caller_stake_percentage = stakes[artist][msg.sender];
             if (caller_stake_percentage > 0) {
-                uint256 royalties_for_artist = (total_received[artist] * caller_stake_percentage) / 100;
+                uint256 royalties_for_artist = (artists[i].total_received * caller_stake_percentage) / 100;
                 total_stake += royalties_for_artist;
                 stakes[artist][msg.sender] = 0;
         }
