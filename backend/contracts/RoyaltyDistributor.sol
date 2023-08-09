@@ -47,25 +47,25 @@ contract RoyaltyDistributor {
     struct Artist {
         address addr;
         uint256 total_received;
-        uint256 share_percentage;
+        uint8 shares_for_sale;
         uint256 share_price;
-        uint256 
     }
 
     Artist[] public artists;
     mapping (address => uint256) public artist_index;
-    mapping (address => mapping (address => uint256)) public stakes;
+    mapping (address => mapping (address => uint8)) public stakes;
 
     constructor() {
         Artist memory zero_artist = Artist(address(0), 0, 0, 0);
         artists.push(zero_artist);
     }
 
-    function registerArtist(uint256 share_price, percentage ) external {
+    function registerArtist(uint8 shares_for_sale, uint256 share_price) external {
         require(artist_index[msg.sender] == 0, "Artist already registered");
         artist_index[msg.sender] = artists.length;
-        Artist memory temp_artist = Artist(msg.sender, 0, 0, 0);
+        Artist memory temp_artist = Artist(msg.sender, 0, shares_for_sale, share_price);
         artists.push(temp_artist);
+        stakes[msg.sender][msg.sender] = 100 - shares_for_sale;
     }
 
     function giveRoyalties(address artist) external payable {
@@ -73,7 +73,7 @@ contract RoyaltyDistributor {
         artists[artist_index[artist]].total_received += msg.value;
     }
 
-    function buyRoyaltyRights(address artist, uint256 percentage) external {
+    function buyRoyaltyRights(address artist, uint8 percentage) external {
         // @todo ensure that percentage is actually available
         require (percentage > 0, "Percentage must be greater than 0");
         require (percentage <= 100, "Percentage must be less than or equal to 100");

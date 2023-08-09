@@ -14,7 +14,7 @@ describe("RoyaltyDistributor", () => {
     });
 
     it("should allow artists to register", async () => {
-        await distributor.connect(artist1).registerArtist();
+        await distributor.connect(artist1).registerArtist(100, ethers.utils.parseEther("0.1"));
         const registeredArtist = await distributor.artists(1);
         expect(registeredArtist.addr).to.equal(artist1.address);
     });
