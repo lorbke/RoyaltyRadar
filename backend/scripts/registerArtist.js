@@ -8,7 +8,7 @@ async function main() {
     const YourContract = await ethers.getContractFactory("RoyaltyDistributor");
     const contractInstance = YourContract.attach(deployedAddress);
 
-    const tx = await contractInstance.registerArtist();
+    const tx = await contractInstance.registerArtist(10, ethers.utils.parseEther("0.1"));
     await tx.wait();
     console.log("Transaction has been mined!");
 }
