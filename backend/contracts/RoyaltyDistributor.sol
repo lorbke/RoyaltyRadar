@@ -49,33 +49,41 @@ contract RoyaltyDistributor {
         uint256 total_received;
         uint256 share_percentage;
         uint256 share_price;
+        uint256 
     }
 
     Artist[] public artists;
     mapping (address => uint256) public artist_index;
     mapping (address => mapping (address => uint256)) public stakes;
 
-    function registerArtist() external {
-        // @todo Ensure the artist is not already registered.
+    constructor() {
+        Artist memory zero_artist = Artist(address(0), 0, 0, 0);
+        artists.push(zero_artist);
+    }
+
+    function registerArtist(uint256 share_price, percentage ) external {
         require(artist_index[msg.sender] == 0, "Artist already registered");
-        artists.push(Artist(msg.sender, 0, 0, 0));
         artist_index[msg.sender] = artists.length;
+        Artist memory temp_artist = Artist(msg.sender, 0, 0, 0);
+        artists.push(temp_artist);
     }
 
     function giveRoyalties(address artist) external payable {
+        require (artist_index[artist] > 0, "Artist must be registered");
         artists[artist_index[artist]].total_received += msg.value;
     }
 
     function buyRoyaltyRights(address artist, uint256 percentage) external {
-        // @todo ensure that artist exists
-        // @todo ensure that percentage is not 0
         // @todo ensure that percentage is actually available
+        require (percentage > 0, "Percentage must be greater than 0");
+        require (percentage <= 100, "Percentage must be less than or equal to 100");
+        require (artist_index[artist] > 0, "Artist must be registered");
         stakes[artist][msg.sender] += percentage;
     }
 
     function withdrawRoyalties() external {
         uint256 total_stake = 0;
-        for (uint i = 0; i < artists.length; i++) {
+        for (uint i = 1; i < artists.length; i++) {
             address artist = artists[i].addr;
             uint256 caller_stake_percentage = stakes[artist][msg.sender];
             if (caller_stake_percentage > 0) {

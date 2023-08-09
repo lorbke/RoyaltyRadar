@@ -15,8 +15,8 @@ describe("RoyaltyDistributor", () => {
 
     it("should allow artists to register", async () => {
         await distributor.connect(artist1).registerArtist();
-        const registeredArtist = await distributor.artists(0);
-        expect(registeredArtist).to.equal(artist1.address);
+        const registeredArtist = await distributor.artists(1);
+        expect(registeredArtist.addr).to.equal(artist1.address);
     });
 
     it("should prevent double registration for artists", async () => {
@@ -24,10 +24,9 @@ describe("RoyaltyDistributor", () => {
     });
 
 	it("should allow royalties to be given to the contract", async () => {
-		const initialContractBalance = await ethers.provider.getBalance(distributor.address);
 		await distributor.giveRoyalties(artist1.address, { value: ethers.utils.parseEther("1") });
-		const newContractBalance = await ethers.provider.getBalance(distributor.address);
-		expect(initialContractBalance).to.not.equal(newContractBalance);
+        const received = await distributor.artists(1);
+        expect(received.total_received).to.equal(ethers.utils.parseEther("1"));
 	});	
 
     it("should allow royalty rights to be bought", async () => {
