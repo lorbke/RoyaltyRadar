@@ -65,7 +65,7 @@ contract RoyaltyDistributor {
         artist_index[msg.sender] = artists.length;
         Artist memory temp_artist = Artist(msg.sender, 0, shares_for_sale, share_price);
         artists.push(temp_artist);
-        stakes[msg.sender][msg.sender] = 100 - shares_for_sale;
+        stakes[msg.sender][msg.sender] = 100;
     }
 
     function giveRoyalties(address artist) external payable {
@@ -73,12 +73,14 @@ contract RoyaltyDistributor {
         artists[artist_index[artist]].total_received += msg.value;
     }
 
-    function buyRoyaltyRights(address artist, uint8 percentage) external {
-        // @todo ensure that percentage is actually available
-        require (percentage > 0, "Percentage must be greater than 0");
-        require (percentage <= 100, "Percentage must be less than or equal to 100");
+    function buyRoyaltyRights(address artist) external payable {
+        require (msg.value > 0, "Value must be greater than 0");
         require (artist_index[artist] > 0, "Artist must be registered");
-        stakes[artist][msg.sender] += percentage;
+        uint8 shares = (uint8)(msg.value / artists[artist_index[artist]].share_price);
+        require (shares <= artists[artist_index[artist]].shares_for_sale, "Not enough shares available");
+        stakes[artist][msg.sender] += shares;
+        stakes[artist][artist] -= shares;
+        artists[artist_index[artist]].shares_for_sale -= shares;
     }
 
     function withdrawRoyalties() external {

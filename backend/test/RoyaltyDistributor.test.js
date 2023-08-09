@@ -14,7 +14,7 @@ describe("RoyaltyDistributor", () => {
     });
 
     it("should allow artists to register", async () => {
-        await distributor.connect(artist1).registerArtist(100, ethers.utils.parseEther("0.1"));
+        await distributor.connect(artist1).registerArtist(10, ethers.utils.parseEther("0.1"));
         const registeredArtist = await distributor.artists(1);
         expect(registeredArtist.addr).to.equal(artist1.address);
     });
@@ -30,7 +30,7 @@ describe("RoyaltyDistributor", () => {
 	});	
 
     it("should allow royalty rights to be bought", async () => {
-        await distributor.connect(staker1).buyRoyaltyRights(artist1.address, 10);
+        await distributor.connect(staker1).buyRoyaltyRights(artist1.address, { value: ethers.utils.parseEther("1") });
         const stake = await distributor.stakes(artist1.address, staker1.address);
         expect(stake).to.equal(10);
     });
