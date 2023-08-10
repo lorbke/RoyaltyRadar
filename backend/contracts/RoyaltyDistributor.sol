@@ -45,9 +45,9 @@ contract RoyaltyDistributor {
         uint256 total_stake = 0;
         for (uint i = 1; i < artists.length; i++) {
             address artist = artists[i].addr;
-            uint256 caller_stake_percentage = stakes[artist][msg.sender];
-            if (caller_stake_percentage > 0) {
-                uint256 royalties_for_artist = (artists[i].total_received * caller_stake_percentage) / 100;
+            uint256 stake_for_artist = stakes[artist][msg.sender];
+            if (stake_for_artist > 0) {
+                uint256 royalties_for_artist = (artists[i].total_received * stake_for_artist) / 100;
                 total_stake += royalties_for_artist;
             }
         }
@@ -55,13 +55,12 @@ contract RoyaltyDistributor {
     }
 
     function withdrawRoyalties() external {
-        // @todo rename variables to be more descriptive
         uint256 total_stake = 0;
         for (uint i = 1; i < artists.length; i++) {
             address artist = artists[i].addr;
-            uint256 caller_stake_percentage = stakes[artist][msg.sender];
-            if (caller_stake_percentage > 0) {
-                uint256 royalties_for_artist = (artists[i].total_received * caller_stake_percentage) / 100;
+            uint256 stake_for_artist = stakes[artist][msg.sender];
+            if (stake_for_artist > 0) {
+                uint256 royalties_for_artist = (artists[i].total_received * stake_for_artist) / 100;
                 total_stake += royalties_for_artist;
                 stakes[artist][msg.sender] = 0;
         }
