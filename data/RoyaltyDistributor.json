@@ -1,5 +1,10 @@
 [
   {
+    "inputs": [],
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
     "inputs": [
       {
         "internalType": "address",
@@ -30,8 +35,23 @@
     "outputs": [
       {
         "internalType": "address",
-        "name": "",
+        "name": "addr",
         "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "total_received",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint8",
+        "name": "shares_for_sale",
+        "type": "uint8"
+      },
+      {
+        "internalType": "uint256",
+        "name": "share_price",
+        "type": "uint256"
       }
     ],
     "stateMutability": "view",
@@ -43,16 +63,24 @@
         "internalType": "address",
         "name": "artist",
         "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "percentage",
-        "type": "uint256"
       }
     ],
     "name": "buyRoyaltyRights",
     "outputs": [],
-    "stateMutability": "nonpayable",
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getEarnedRoyalties",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
     "type": "function"
   },
   {
@@ -69,7 +97,18 @@
     "type": "function"
   },
   {
-    "inputs": [],
+    "inputs": [
+      {
+        "internalType": "uint8",
+        "name": "shares_for_sale",
+        "type": "uint8"
+      },
+      {
+        "internalType": "uint256",
+        "name": "share_price",
+        "type": "uint256"
+      }
+    ],
     "name": "registerArtist",
     "outputs": [],
     "stateMutability": "nonpayable",
@@ -91,28 +130,9 @@
     "name": "stakes",
     "outputs": [
       {
-        "internalType": "uint256",
+        "internalType": "uint8",
         "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "name": "total_received",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
+        "type": "uint8"
       }
     ],
     "stateMutability": "view",

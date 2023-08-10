@@ -3,15 +3,17 @@ import './artistModal.css';
 import royaltyDistributorABI from '../../data/RoyaltyDistributor.json';
 const ethers = require('ethers');
 
-function ModalExchangeButton() {
+
+function ModalExchangeButton(parse) {
   const [provider, setProvider] = useState(null);
   const [contract, setContract] = useState(null);
 
   // ABI of the contract you want to interact with
   const contractAbi = royaltyDistributorABI;
-  const contractAddress = "0x8b55464F8e1ba6bD3aEd69683F80F104878b0bd4";
+  const contractAddress = "0x8E7fD2EAfB33dA6E673dAf465FD974189666C28B";
   console.log(contractAbi) // Replace with your contract's ABI
   console.log(process.env.CONTRACT_ADDRESS)
+  console.log(parse)
 
   useEffect(() => {
     if (window.ethereum) {
@@ -24,13 +26,15 @@ function ModalExchangeButton() {
   useEffect(() => {
     if (provider) {
       const signer = provider.getSigner();
-      setContract(new ethers.Contract(contractAddress, contractAbi, signer));
+      setContract(new ethers.Contract(contractAddress, contractAbi, signer)); 
     }
   }, [provider]);
 
   const callMyFunction = async () => {
     if (contract) {
-      const result = await contract.buyRoyaltyRights("0x18EeDAb07377871eFe7f2B31bFd86EebB8F5DeFF", 10); // Placeholder address of Artist
+      const price = ethers.utils.parseEther(String(parse.shares * parse.artist.price))
+      console.log(price);
+      const result = await contract.buyRoyaltyRights("0x18EeDAb07377871eFe7f2B31bFd86EebB8F5DeFF", {value: price}); // Placeholder address of Artist
       console.log("Result:", result);
     }
   };
