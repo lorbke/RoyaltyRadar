@@ -1,3 +1,4 @@
 backend/node_modules
 backend/artifacts
 backend/.env
+testing-frontend/node_modules
