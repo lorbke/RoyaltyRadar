@@ -6,7 +6,7 @@ const { API_URL, PRIVATE_KEY } = process.env;
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
   solidity: "0.8.18",
-  royaltyDistributor_address: "0x151840029b5D9e4d0F472B4c7c952e93cCD74BdF",
+  royaltyDistributor_address: "0x8E7fD2EAfB33dA6E673dAf465FD974189666C28B",
   networks: {
       hardhat: {},
       zoragoerli: {
