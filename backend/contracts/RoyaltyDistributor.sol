@@ -42,7 +42,6 @@ contract RoyaltyDistributor {
     }
 
     function getEarnedRoyalties() external view returns (uint256){
-        // @todo fix this function
         uint256 total_stake = 0;
         for (uint i = 1; i < artists.length; i++) {
             address artist = artists[i].addr;

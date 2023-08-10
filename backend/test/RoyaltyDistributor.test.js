@@ -36,8 +36,7 @@ describe("RoyaltyDistributor", () => {
 	});	
 
     it("should return the earned royalties", async () => {
-        const earned = await distributor.getEarnedRoyalties();
-        console.log(ethers.utils.formatEther(earned));
+        const earned = await distributor.connect(staker1).getEarnedRoyalties();
         expect(earned).to.equal(ethers.utils.parseEther("0.1"));
     });
 
