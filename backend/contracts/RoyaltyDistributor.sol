@@ -63,9 +63,9 @@ contract RoyaltyDistributor {
                 uint256 royalties_for_artist = (artists[i].total_received * stake_for_artist) / 100;
                 total_stake += royalties_for_artist;
                 stakes[artist][msg.sender] = 0;
+            }
         }
         require(total_stake > 0, "No royalties to withdraw");
-    }
         payable(msg.sender).transfer(total_stake);
     }
 }
