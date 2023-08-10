@@ -22,6 +22,12 @@ describe("RoyaltyDistributor", () => {
     it("should prevent double registration for artists", async () => {
         await expect(distributor.connect(artist1).registerArtist()).to.be.reverted;
     });
+    
+    it("should allow royalty rights to be bought", async () => {
+        await distributor.connect(staker1).buyRoyaltyRights(artist1.address, { value: ethers.utils.parseEther("1") });
+        const stake = await distributor.stakes(artist1.address, staker1.address);
+        expect(stake).to.equal(10);
+    });
 
 	it("should allow royalties to be given to the contract", async () => {
 		await distributor.giveRoyalties(artist1.address, { value: ethers.utils.parseEther("1") });
@@ -29,10 +35,10 @@ describe("RoyaltyDistributor", () => {
         expect(received.total_received).to.equal(ethers.utils.parseEther("1"));
 	});	
 
-    it("should allow royalty rights to be bought", async () => {
-        await distributor.connect(staker1).buyRoyaltyRights(artist1.address, { value: ethers.utils.parseEther("1") });
-        const stake = await distributor.stakes(artist1.address, staker1.address);
-        expect(stake).to.equal(10);
+    it("should return the earned royalties", async () => {
+        const earned = await distributor.getEarnedRoyalties();
+        console.log(ethers.utils.formatEther(earned));
+        expect(earned).to.equal(ethers.utils.parseEther("0.1"));
     });
 
     it("should allow stakers to withdraw their royalties", async () => {

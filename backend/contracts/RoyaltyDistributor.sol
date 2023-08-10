@@ -41,7 +41,22 @@ contract RoyaltyDistributor {
         artists[artist_index[artist]].shares_for_sale -= shares;
     }
 
+    function getEarnedRoyalties() external view returns (uint256){
+        // @todo fix this function
+        uint256 total_stake = 0;
+        for (uint i = 1; i < artists.length; i++) {
+            address artist = artists[i].addr;
+            uint256 caller_stake_percentage = stakes[artist][msg.sender];
+            if (caller_stake_percentage > 0) {
+                uint256 royalties_for_artist = (artists[i].total_received * caller_stake_percentage) / 100;
+                total_stake += royalties_for_artist;
+            }
+        }
+        return total_stake;
+    }
+
     function withdrawRoyalties() external {
+        // @todo rename variables to be more descriptive
         uint256 total_stake = 0;
         for (uint i = 1; i < artists.length; i++) {
             address artist = artists[i].addr;
