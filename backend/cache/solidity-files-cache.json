@@ -552,8 +552,8 @@
       ]
     },
     "/Users/luca/Desktop/Superhack/RoyaltyRadar/backend/contracts/RoyaltyDistributor.sol": {
-      "lastModificationDate": 1691671341489,
-      "contentHash": "6011c65e97d1719296d5b28d8d4ae6c3",
+      "lastModificationDate": 1691701577178,
+      "contentHash": "770383e5ea99a4a0d4e51661feaf8d30",
       "sourceName": "contracts/RoyaltyDistributor.sol",
       "solcConfig": {
         "version": "0.8.18",
