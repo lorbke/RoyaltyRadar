@@ -7,7 +7,7 @@ import './artistList.css';
 import './artistModal.css'; 
 import ArtistModal from './artistModal';
 
-const ArtistList = () => {
+const ArtistList = (contract) => {
   const [selectedArtist, setSelectedArtist] = useState(null);
 
   const openModal = (artist) => {
@@ -68,6 +68,8 @@ const ArtistList = () => {
             artist={selectedArtist}
             onClose={closeModal}
             onExchange={handleExchange}
+            contract={contract}
+            provider={provider}
           />
         )}
       </Modal>

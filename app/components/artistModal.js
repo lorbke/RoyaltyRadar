@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import './artistModal.css'; // Import your custom CSS
 import ModalExchangeButton from './modalExchangeButton';
 
-const ArtistModal = ({ artist, onClose, onExchange }) => {
+const ArtistModal = ({ artist, onClose, onExchange, provider, contract }) => {
   const [ethValue, setEthValue] = useState('');
   const [royaltyValue, setRoyaltyValue] = useState('');
 
@@ -41,7 +41,7 @@ const ArtistModal = ({ artist, onClose, onExchange }) => {
         />
       </div>
       <div className="modalFooter">
-        <ModalExchangeButton artist={artist} shares={royaltyValue}/>
+        <ModalExchangeButton artist={artist} shares={royaltyValue} contract={contract}/>
         <button>hey</button>
       </div>
     </div>
