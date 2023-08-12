@@ -30,7 +30,7 @@ const ArtistList = ({contract, provider}) => {
           <div
             key={artist.id}
             className="artistCardWrapper"
-            onClick={(event) => openModal(artist)}
+            onClick={() => openModal(artist)}
           >
           <div className="artistCard">
             <img src={artist.profilePic} alt={`${artist.name}'s Profile`} className="artistImage" />
