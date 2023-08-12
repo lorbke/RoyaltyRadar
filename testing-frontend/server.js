@@ -8,7 +8,7 @@ app.use('/static', express.static(path.join(__dirname, 'node_modules/ethers/dist
 
 // Your smart contract details
 const contractABI = require('./contractData.json');
-const contractAddress = "0x151840029b5D9e4d0F472B4c7c952e93cCD74BdF";
+const contractAddress = "0x13127702Dc2b4Aac648b810B73F3CD56e0Fa3de4";
 
 app.get('/', (req, res) => {
     res.send(`
@@ -91,7 +91,7 @@ app.get('/', (req, res) => {
     `);
 });
 
-const PORT = 3000;
+const PORT = 3001;
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });

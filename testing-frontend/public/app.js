@@ -1,5 +1,5 @@
-const contractABI = require('./contractData.json');
-const contractAddress = "0x295b25B1975B8Cad6d7d48022cB6e777bB12a29e";
+const contractABI = require('../contractData.json');
+const contractAddress = "0x13127702Dc2b4Aac648b810B73F3CD56e0Fa3de4";
 
 let web3;
 let contract;
