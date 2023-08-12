@@ -12,7 +12,7 @@ const ethers = require('ethers');
 const ProfilPage = ({ searchParams }) => {
   // const [provider, setProvider] = useState(null);
   // const [contract, setContract] = useState(null);
-  const searchParams = useSearchParams();
+  searchParams = useSearchParams();
   const contract = searchParams.get('contract');
   const [earnedRoyalties, setEarnedRoyalties] = useState(null); // New state for earned royalties
   // const contractAbi = royaltyDistributorABI;

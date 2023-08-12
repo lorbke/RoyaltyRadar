@@ -6,8 +6,9 @@ import artistsData from '../../data/artistData';
 import './artistList.css';
 import './artistModal.css'; 
 import ArtistModal from './artistModal';
+import TradeGraph from './tradeGraph.js';
 
-const ArtistList = (contract) => {
+const ArtistList = ({contract, provider}) => {
   const [selectedArtist, setSelectedArtist] = useState(null);
 
   const openModal = (artist) => {
@@ -19,7 +20,6 @@ const ArtistList = (contract) => {
   };
 
   const handleExchange = () => {
-    // Handle the exchange action here
     console.log('Exchange clicked for', selectedArtist.name);
   };
 
@@ -29,15 +29,18 @@ const ArtistList = (contract) => {
         {artistsData.map((artist) => (
           <div
             key={artist.id}
-            className="artistCard"
-            onClick={() => openModal(artist)}
+            className="artistCardWrapper"
+            onClick={(event) => openModal(artist)}
           >
+          <div className="artistCard">
             <img src={artist.profilePic} alt={`${artist.name}'s Profile`} className="artistImage" />
             <div className="artistInfo">
               <h2 className="artistFont">{artist.name}</h2>
               <p className="artistFont">Price: {artist.price}</p>
             </div>
+            <TradeGraph data={artist.tradeData}/>
           </div>
+        </div>
         ))}
       </div>
 
@@ -68,8 +71,8 @@ const ArtistList = (contract) => {
             artist={selectedArtist}
             onClose={closeModal}
             onExchange={handleExchange}
-            contract={contract}
             provider={provider}
+            contract={contract}
           />
         )}
       </Modal>

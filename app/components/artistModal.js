@@ -41,7 +41,7 @@ const ArtistModal = ({ artist, onClose, onExchange, provider, contract }) => {
         />
       </div>
       <div className="modalFooter">
-        <ModalExchangeButton artist={artist} shares={royaltyValue} contract={contract}/>
+        <ModalExchangeButton artist={artist} shares={royaltyValue} contract={contract} provider={provider}/>
         <button>hey</button>
       </div>
     </div>
