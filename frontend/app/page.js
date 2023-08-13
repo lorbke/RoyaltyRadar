@@ -1,14 +1,15 @@
 "use client";
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
-import styles from './page.css';
+import './page.css'
 import NavBar from './components/navbar';
 import ArtistList from './components/artistList';
 import MetaMaskButton from './components/metamaskButton';
 import royaltyDistributorABI from '../data/RoyaltyDistributor.json';
-const ethers = require('ethers');
+import ProfilUnstakeButton from './components/profilUnstakeButton';
 
 const HomePage = () => {
+  const ethers = require('ethers');
   const [provider, setProvider] = useState(null);
   const [contract, setContract] = useState(null);
   const contractAbi = royaltyDistributorABI;
@@ -31,10 +32,17 @@ const HomePage = () => {
 
   return (
     <div>
-      <NavBar contract={contract}/>
-      <MetaMaskButton />
-      <h1>Royalty Radar 📡 </h1>
+      <div className="heading">
+        <div className="heading1">
+          <h1>Royalty Radar 📡 </h1>
+        </div>
+        <div>
+          <MetaMaskButton />
+          <ProfilUnstakeButton contract={contract} provider={provider}/>
+        </div>
+      </div>
       <ArtistList contract={contract} provider={provider}/>
+      <NavBar contract={contract} provider={provider}/>
     </div>
   );
 };

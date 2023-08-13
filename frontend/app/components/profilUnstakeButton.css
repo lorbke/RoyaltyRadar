@@ -1,0 +1,27 @@
+.profilUnstakeContainer {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.profilUnstakeButton {
+    width:250px;
+    background-color: #8884d8;
+    color: #000;
+    padding: 10px 10px;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 2px;
+    transition: background-color 0.3s;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    text-shadow: 2px 1.5px white;
+}
+
+.profilUnstakeButton:hover {
+    color: black;
+    background-color: white;
+  }
+  

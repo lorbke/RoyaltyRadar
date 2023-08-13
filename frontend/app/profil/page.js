@@ -7,7 +7,7 @@ import ProfilUnstakeButton from '../components/profilUnstakeButton';
 // import royaltyDistributorABI from '../../data/RoyaltyDistributor.json';
 const ethers = require('ethers');
 
-
+//NOT IMPLEMENTED BECAUSE OF TIME CONSTRAINTS AND SEARCH QUERY NOT WORKING
 
 const ProfilPage = ({ searchParams }) => {
   // const [provider, setProvider] = useState(null);
@@ -17,7 +17,7 @@ const ProfilPage = ({ searchParams }) => {
   const [earnedRoyalties, setEarnedRoyalties] = useState(null); // New state for earned royalties
   // const contractAbi = royaltyDistributorABI;
   // const contractAddress = "0x8E7fD2EAfB33dA6E673dAf465FD974189666C28B";
-  
+  console.log(contract);
   // useEffect(() => {
   //   if (window.ethereum) {
   //     setProvider(new ethers.providers.Web3Provider(window.ethereum));
@@ -43,9 +43,9 @@ const ProfilPage = ({ searchParams }) => {
   return (
     <div>
 	    <NavBar />
-      <MetaMaskButton />
+      <MetaMaskButton contract={contract} provier={provier}/>
       <h1>Royalty Radar 📡 </h1>
-      <h2>Your Royalties: {earnedRoyalties} ETH</h2>
+
       <ProfilUnstakeButton />
     </div>
   );

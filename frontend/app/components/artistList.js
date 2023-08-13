@@ -36,9 +36,10 @@ const ArtistList = ({contract, provider}) => {
             <img src={artist.profilePic} alt={`${artist.name}'s Profile`} className="artistImage" />
             <div className="artistInfo">
               <h2 className="artistFont">{artist.name}</h2>
-              <p className="artistFont">Price: {artist.price}</p>
+              <p className="artistFont">Price: {artist.price} per %</p>
             </div>
             <TradeGraph data={artist.tradeData}/>
+            <p className="graphInfo"> - total trades last 4 weeks - </p>
           </div>
         </div>
         ))}

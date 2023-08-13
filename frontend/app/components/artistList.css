@@ -36,7 +36,7 @@
 }
 
 .artistImage {
-  max-width: 100%;
+  max-width: 90%;
   height: auto;
   margin-bottom: 10px;
   border-radius: 50%;
@@ -48,6 +48,10 @@
   flex-direction: column;
   justify-content: center;
   text-align: center;
+}
+
+.graphInfo {
+  color: #333;
 }
 
 .artistFont {

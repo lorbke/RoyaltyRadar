@@ -1,0 +1,11 @@
+.heading {
+    font-size: 1em;
+    font-weight: bold;
+    padding: 0em 3em 0em 3em;
+}
+
+.heading1 {
+    font-size: 30px;
+    text-align: center;
+    margin: 1%;
+}

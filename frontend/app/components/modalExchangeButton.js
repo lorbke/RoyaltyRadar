@@ -11,7 +11,7 @@ function ModalExchangeButton({artist, shares, contract, provider}) {
       console.log(artist);
       console.log(shares);
       console.log(price);
-      const result = await contract.buyRoyaltyRights("0x18EeDAb07377871eFe7f2B31bFd86EebB8F5DeFF", {value: price}); // Placeholder address of Artist
+      const result = await contract.buyRoyaltyRights("0x73D9146A7a8264327ad324e8E10976fda134E584", {value: price}); // Placeholder address of Artist
       console.log("Result:", result);
     }
   };

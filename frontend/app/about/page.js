@@ -1,6 +1,5 @@
 import React from 'react';
 import NavBar from '../components/navbar';
-import MetaMaskButton from '../components/metamaskButton';
 
 const ProfilPage = () => {
 

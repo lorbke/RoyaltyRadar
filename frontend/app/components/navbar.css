@@ -23,6 +23,7 @@ body {
 
 .navMenu {
   position: absolute;
+  justify-content: center;
   top: 50%;
   width: 80%;
   left: 50%;
