@@ -1,0 +1,8 @@
+.trade-graph {
+  transition: opacity 0.3s ease;
+  opacity: 1;
+}
+
+.trade-graph.hidden {
+  opacity: 0;
+}

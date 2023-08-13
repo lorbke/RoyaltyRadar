@@ -1,0 +1,57 @@
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
+.artistGrid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.artistCardWrapper {
+  flex-basis: calc(33.33% - 20px);
+}
+
+.artistCard {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: 30px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 10px;
+}
+
+.artistCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.artistImage {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+  border-radius: 50%;
+}
+
+.artistInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.artistFont {
+  color: #333;
+  font-weight: bold;
+  margin-top: 10px;
+}
