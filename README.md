@@ -7,19 +7,15 @@ First, run the main server:
 
 ```bash
 cd frontend/
+npm install
 npm run dev
-# or
-cd frontend/
-yarn dev
-# or
-cd frontend/
-pnpm dev
 ```
 
 then, run the testnet server:
 
 ```bash
 cd ../testing-frontend/
+npm install
 node server.js
 ```
 
