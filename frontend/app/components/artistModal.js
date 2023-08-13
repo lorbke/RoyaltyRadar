@@ -23,16 +23,10 @@ const ArtistModal = ({ artist, onClose, onExchange, provider, contract }) => {
       <div className="modalInfo">
         <img src={artist.profilePic} alt={`${artist.name}'s Profile`} className="modalArtistImage" />
         <div className="modalArtistInfo">
-          <p>Price: {artist.price}</p>
+          <p>Price: {artist.price} ETH per %</p>
         </div>
       </div>
       <div className="modalTrade">
-        <input
-          className="modalETH"
-          placeholder="Enter ETH amount"
-          value={ethValue}
-          onChange={handleEthChange}
-        />
         <input
           className="modalRoyalty"
           placeholder="Enter royalty percentage"
@@ -42,7 +36,6 @@ const ArtistModal = ({ artist, onClose, onExchange, provider, contract }) => {
       </div>
       <div className="modalFooter">
         <ModalExchangeButton artist={artist} shares={royaltyValue} contract={contract} provider={provider}/>
-        <button>hey</button>
       </div>
     </div>
   );
